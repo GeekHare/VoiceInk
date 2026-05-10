@@ -52,7 +52,9 @@ brew install --cask voiceink
 ```
 
 ### Build from Source
-As an open-source project, you can build VoiceInk yourself by following the instructions in [BUILDING.md](BUILDING.md). However, the compiled version includes additional benefits like automatic updates, priority support via Discord and email, and helps fund ongoing development.
+As an open-source project, you can build VoiceInk yourself by following the instructions in [BUILDING.md](BUILDING.md). On macOS you can also run `./scripts/build-local-macos.sh` from the repository root for a guided local build. However, the compiled version includes additional benefits like automatic updates, priority support via Discord and email, and helps fund ongoing development.
+
+Maintaining a fork? See [FORK_SYNC.md](FORK_SYNC.md) for configuring `origin` / `upstream` and merging updates from the original repository.
 
 ## Requirements
 
@@ -61,6 +63,7 @@ As an open-source project, you can build VoiceInk yourself by following the inst
 ## Documentation
 
 - [Building from Source](BUILDING.md) - Detailed instructions for building the project
+- [Fork sync (upstream)](FORK_SYNC.md) - Keep your fork updated from the original VoiceInk repo
 - [Contributing Guidelines](CONTRIBUTING.md) - How to contribute to VoiceInk
 - [Code of Conduct](CODE_OF_CONDUCT.md) - Our community standards
 

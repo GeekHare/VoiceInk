@@ -4,6 +4,13 @@ WHISPER_CPP_DIR := $(DEPS_DIR)/whisper.cpp
 FRAMEWORK_PATH := $(WHISPER_CPP_DIR)/build-apple/whisper.xcframework
 LOCAL_DERIVED_DATA := $(CURDIR)/.local-build
 
+# Prefer a full Xcode install over Command Line Tools alone so xcodebuild and SDK
+# paths (macOS, etc.) resolve correctly.
+XCODE_DEV_DIR := $(firstword $(wildcard /Applications/Xcode*.app/Contents/Developer))
+ifneq ($(XCODE_DEV_DIR),)
+export DEVELOPER_DIR := $(XCODE_DEV_DIR)
+endif
+
 .PHONY: all clean whisper setup build local check healthcheck help dev run
 
 # Default target
@@ -32,7 +39,7 @@ whisper:
 		else \
 			(cd $(WHISPER_CPP_DIR) && git pull); \
 		fi; \
-		cd $(WHISPER_CPP_DIR) && ./build-xcframework.sh; \
+		cd $(WHISPER_CPP_DIR) && WHISPER_CPP_DIR="$(WHISPER_CPP_DIR)" bash "$(CURDIR)/scripts/build-whisper-macos-only.sh"; \
 	else \
 		echo "whisper.xcframework already built in $(DEPS_DIR), skipping build"; \
 	fi

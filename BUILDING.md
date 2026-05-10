@@ -14,6 +14,16 @@ Before you begin, ensure you have:
 
 The easiest way to build VoiceInk is using the included Makefile, which automates the entire build process including building and linking the whisper framework.
 
+### One-shot script (macOS)
+
+From the repository root:
+
+```bash
+./scripts/build-local-macos.sh
+```
+
+This selects a full Xcode install when present, installs CMake via pip if neither Homebrew nor PATH provides it, then runs `make local` and leaves `VoiceInk.app` in `~/Downloads`. Requirements are still: macOS 14.4+, Xcode (not Command Line Tools alone), Git.
+
 ### Simple Build Commands
 
 ```bash
