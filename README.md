@@ -1,3 +1,31 @@
+## Установка этой копии на macOS
+
+Открой обычный **Terminal**, перейди в папку этой копии проекта и запусти:
+
+```bash
+cd "/путь/к/voiceink"
+./scripts/build-local-macos.sh --install
+```
+
+Замени `/путь/к/voiceink` на реальный путь. Запускай **без `sudo`**.
+
+Скрипт проведёт по установке: проверит Xcode, сам подготовит остальные зависимости,
+соберёт приложение и установит его в `~/Applications/VoiceInk.app`.
+Если нужен ручной шаг, он покажет инструкцию и дождётся **Enter**, затем проверит
+готовность снова. Можно нажать **a**, чтобы открыть App Store, **x** — Xcode,
+или **q**, чтобы выйти и продолжить позже той же командой.
+
+Нужен **полный Xcode 26+**, одних Command Line Tools недостаточно. Скрипт попробует
+установить Xcode через CLI, когда это возможно; вход в Apple Account, принятие
+лицензии и системные подтверждения могут потребовать твоего участия.
+Готовые зависимости сохраняются, ошибки записываются в `.local-build/logs/`.
+После установки скрипт предложит открыть приложение.
+
+Подробности и дополнительные параметры: [BUILDING.md](BUILDING.md).
+Для запуска без ожидания ввода: `./scripts/build-local-macos.sh --install --non-interactive`.
+
+---
+
 <div align="center">
   <img src="VoiceInk/Assets.xcassets/AppIcon.appiconset/256-mac.png" width="180" height="180" />
   <h1>VoiceInk</h1>
@@ -52,7 +80,7 @@ brew install --cask voiceink
 ```
 
 ### Build from Source
-As an open-source project, you can build VoiceInk yourself by following the instructions in [BUILDING.md](BUILDING.md). On macOS you can also run `./scripts/build-local-macos.sh` from the repository root for a guided local build. However, the compiled version includes additional benefits like automatic updates, priority support via Discord and email, and helps fund ongoing development.
+As an open-source project, you can build VoiceInk yourself by following the instructions in [BUILDING.md](BUILDING.md). On macOS, run `./scripts/build-local-macos.sh --install` to prepare dependencies, build a locally signed Release app, and install it in `~/Applications`. Full Xcode 26+ is required; the script attempts CLI installation when possible and explains any manual steps. However, the compiled version includes additional benefits like automatic updates, priority support via Discord and email, and helps fund ongoing development.
 
 Maintaining a fork? See [FORK_SYNC.md](FORK_SYNC.md) for configuring `origin` / `upstream` and merging updates from the original repository.
 
